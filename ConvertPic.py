@@ -32,14 +32,18 @@ class ConvertPic:
 
         self.add = tk.Button(frame, text="Add Pictures", command=lambda: self.press_add())
         self.add.grid(row=5, column=0, padx=1, pady=1, sticky=tk.N+tk.E+tk.W+tk.S)
-        self.run = tk.Button(frame, text="Run PicConvert", command=lambda: self.press_run())
+        self.run = tk.Button(frame, text="Convert to jpg", command=lambda: self.press_jpg())
         self.run.grid(row=5, column=1, padx=1, pady=1, sticky=tk.N+tk.E+tk.W+tk.S)
+        self.add = tk.Button(frame, text="Clear List", command=lambda: self.press_clr())
+        self.add.grid(row=6, column=0, padx=1, pady=1, sticky=tk.N+tk.E+tk.W+tk.S)
+        self.run = tk.Button(frame, text="Convert to png", command=lambda: self.press_png())
+        self.run.grid(row=6, column=1, padx=1, pady=1, sticky=tk.N+tk.E+tk.W+tk.S)
 
         # gives each element in frame a non-zero weight in order
         # to allow proper resizing if window is resized
         for p in range(2):
             tk.Grid.columnconfigure(frame, p, weight=1)
-        for q in range(5):
+        for q in range(7):
             tk.Grid.rowconfigure(frame, q, weight=1)
 
         # method for adding pictures to the conversion list
@@ -56,7 +60,7 @@ class ConvertPic:
                 self.display.config(text=self.display["text"]+"\n"+str(f))
 
         # method for running the picture conversion option
-    def press_run(self):
+    def press_jpg(self):
         for f in self.file_list:
             head, tail = os.path.split(f)
             directory = os.path.dirname(head + "/ConvertPic/")
@@ -68,6 +72,27 @@ class ConvertPic:
             try:
                 img = Image.open(f)
                 rgb_img = img.convert("RGB")
+                rgb_img.save(fout)
+            except IOError:
+                print("error in conversion")
+
+    def press_clr(self):
+        self.display.config(text="")
+        del self.file_list[:]
+
+        # method for running the picture conversion option
+    def press_png(self):
+        for f in self.file_list:
+            head, tail = os.path.split(f)
+            directory = os.path.dirname(head + "/ConvertPic/")
+            if not os.path.exists(directory):
+                os.mkdir(directory)
+            new_pth = head + "/ConvertPic/" + tail
+            root, _ = os.path.splitext(new_pth)
+            fout = root + ".png"
+            try:
+                img = Image.open(f)
+                rgb_img = img.convert("RGBA")
                 rgb_img.save(fout)
             except IOError:
                 print("error in conversion")
