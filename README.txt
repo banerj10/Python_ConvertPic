@@ -1,4 +1,4 @@
-A program to convert image filetypes in python 3.6.0 using the tkinter GUI module.
+A program to convert image filetypes in python 3.6.0 using the tkinter GUI module and the Pillow imaging library.
 
 Can be run using 'python convertpic.py' in the windows command line (requires python 3.6.0 and Pillow 5.0.0).
 
