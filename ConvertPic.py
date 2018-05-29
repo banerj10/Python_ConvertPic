@@ -105,11 +105,11 @@ if __name__ == "__main__":
         # assign weight root grid (not really needed in this case)
     tk.Grid.columnconfigure(root, 0, weight=1)
     tk.Grid.rowconfigure(root, 0, weight=1)
-        # create calculator app as child of root
+        # create picture converter app as child of root
     conv = ConvertPic(root)
 
     root.update()
-        # ensures calculator is centered on screen when opened
+        # ensures picture converter app is centered on screen when opened
     rw, rh = root.winfo_width(), root.winfo_height()
     sw, sh = root.winfo_screenwidth(), root.winfo_screenheight()
     x, y = ((sw/2)-(rw))/2, ((sh/2)-(rh))/2
