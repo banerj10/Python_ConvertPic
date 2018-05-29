@@ -13,7 +13,7 @@ class ConvertPic:
             # on all sides when window is resized
         frame.grid(sticky=tk.N+tk.E+tk.W+tk.S)
 
-            # define and initialize variables for calculator class
+            # define and initialize variables for ConvertPic class
             # file_list contains list of files to be converted 
         self.file_list = []      
 
@@ -21,11 +21,11 @@ class ConvertPic:
         self.display = tk.Label(
             frame, text="", font=("Verdana", 10), anchor=tk.NW, justify=tk.LEFT, \
             fg="black", bg="white")
-            # position calculator display using grid geometry
+            # position display using grid geometry
         self.display.grid(row=0, column=0, columnspan=2, rowspan=5, \
             padx=3, pady=3, sticky=tk.N+tk.E+tk.W+tk.S)
       
-            # calculator buttons defined as button widgets
+            # buttons on the picture converter app defined as button widgets
             # note that the command (for button press) uses lambda functions
             # this is required to ensure evaluation only happens during
             # runtime when the corresponding button is pressed
