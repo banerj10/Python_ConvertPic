@@ -49,7 +49,7 @@ class ConvertPic:
         # method for adding pictures to the conversion list
     def press_add(self):
         new_files = filedialog.askopenfilenames(initialdir = "/", title = "Select file", \
-            filetypes = (("jpg and files","*.jpg;*.png"),("all files","*.*")))
+            filetypes = (("jpg and png files","*.jpg;*.png"),("all files","*.*")))
         for f in new_files:
             self.file_list.append(f)        
         #obtain current text using self.widget["property"]
